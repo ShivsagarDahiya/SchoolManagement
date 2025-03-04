@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: school-management
+    env: python
+    plan: free
+    buildCommand: "pip install -r requirements.txt && python manage.py migrate && python manage.py collectstatic --noinput"
+    startCommand: "gunicorn college_management_system.wsgi:application"
+    envVars:
+      - key: DATABASE_URL
+        value: "your-database-url"
