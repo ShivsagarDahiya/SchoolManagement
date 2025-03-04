@@ -1,0 +1,113 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>College Management System</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="{% static 'plugins/fontawesome-free/css/all.min.css' %}">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="{% static 'https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css' %}">
+    <!-- icheck bootstrap -->
+    <link rel="stylesheet" href="{% static 'plugins/icheck-bootstrap/icheck-bootstrap.min.css' %}">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="{% static 'dist/css/adminlte.min.css' %}">
+    <!-- Google Font: Source Sans Pro -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+    <!-- Google Recaptcha     -->
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+</head>
+
+<body class="hold-transition login-page" style="background: linear-gradient(45deg, #1E90FF, #00BFFF);">
+    <div class="login-box">
+        <div class="login-logo">
+            <div style="background-color: white;margin: 0px auto 0 auto; width: 92px; height: 92px;border-radius: 50%;">
+            <img src="https://png.pngtree.com/png-vector/20230609/ourmid/pngtree-school-logo-design-template-vector-png-image_7125354.png" style="width:90px;height: 90px; margin: 1px auto 0 auto; border-radius: 50%;" alt="">
+        </div>
+            <a href="" style="color: black;font-weight:bold;"><b style="color:white ;font-weight: 500;">Welcome</b> GHHS School</a>
+
+        </div>
+        <!-- /.login-logo -->
+        <div class="card" >
+            <div class="card-body login-card-body" style="border: 1px solid none; border-radius:10px;">
+                <p class="login-box-msg" style="color: black;">Welcome to<b> GHHS </b>Majhaganwan School</p>
+                {% if messages %}
+                <div class="col-12">
+                    {% for message in messages %}
+                    {% if message.tags == 'error' %}
+                    <div class="alert alert-danger text-center ">
+                        {{message }}
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+                </div>
+                {% endif %}
+                <form action="doLogin/" method="post">
+                    {% csrf_token %}
+                    <div class="input-group mb-3">
+                        <input required type="email" name='email' class="form-control" placeholder="Email">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-envelope"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-group mb-3">
+                        <input required type="password" name='password' class="form-control" placeholder="Password">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-lock"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="g-recaptcha" data-sitekey="6LfswtgZAAAAAJ7bhwqZZtDpBsc75ekH6FWA4Fnt"></div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-8">
+                            <div class="icheck-primary">
+                                <!-- <input type="checkbox" id="remember">
+                                <label for="remember">
+                                    I Agree 
+                                </label> -->
+                                <p class="mb-1">
+                                    <a href="{% url 'password_reset' %}">Forgot Password?</a>
+                                </p>
+                            </div>
+                        </div>
+                        <!-- /.col -->
+                        <div class="col-4">
+                            <button type="submit" style="background: linear-gradient(45deg, #1E90FF, #00BFFF);border: none;color: white;transition: 0.3s ease-in-out;" class="btn btn-success btn-block">Login Now</button>
+                        </div>
+
+
+                        <!-- /.col -->
+                    </div>
+                </form>
+
+
+                <!-- <p class="mb-1">
+                    <a href="{% url 'password_reset' %}">Forgot Password?</a>
+                </p> -->
+
+            </div>
+            <!-- /.login-card-body -->
+        </div>
+    </div>
+    <!-- /.login-box -->
+
+    <!-- jQuery -->
+    <script src="{% static 'plugins/jquery/jquery.min.js' %}"></script>
+    <!-- Bootstrap 4 -->
+    <script src="{% static 'plugins/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <!-- AdminLTE App -->
+    <script src="{% static 'dist/js/adminlte.min.js' %}"></script>
+
+</body>
+
+</html>
