@@ -1,18 +1,25 @@
 {
   "builds": [
     {
-      "src": "college_management_system/wsgi.py",
+      "src": "CollegeManagement-Django/college_management_system/wsgi.py",
       "use": "@vercel/python",
       "config": {
-        "maxLambdaSize": "15mb",
-        "runtime": "python3.9"
+        "runtime": "python3.11"
       }
     }
   ],
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "college_management_system/wsgi.py"
+      "dest": "CollegeManagement-Django/college_management_system/wsgi.py"
     }
-  ]
+  ],
+  "functions": {
+    "api/*.py": {
+      "runtime": "python3.11",
+      "maxDuration": 10,
+      "memory": 198
+    }
+  },
+  "includeFiles": ["college_management_system/**/*"]
 }

@@ -89,8 +89,9 @@ WSGI_APPLICATION = 'college_management_system.wsgi.application'
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 DATABASES = {
-    'default': dj_database_url.config(default=f'sqlite:///{BASE_DIR}/db.sqlite3', conn_max_age=500)
+    'default': dj_database_url.config(default='DATABASE_URL')
 }
+
 
     # 'default': {
     #     'ENGINE': 'django.db.backends.mysql',
